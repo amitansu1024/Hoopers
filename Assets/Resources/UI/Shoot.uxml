@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/UI/BaseUI.uss?fileID=7433441132597879392&amp;guid=55cd7625243b25a469bb707e2f5a71e5&amp;type=3#BaseUI" />
+    <ui:VisualElement name="Container" style="height: 505px; width: 352px;" />
+    <ui:Button text="Shoot" display-tooltip-when-elided="true" name="Shoot" />
+</ui:UXML>

@@ -16,7 +16,7 @@ public class DetectPlane : MonoBehaviour
         Plane = Resources.Load<GameObject>("Prefabs/Plane");
 
 
-        Vector3 Position = new Vector3(ARCamera.position.x, ARCamera.position.y - 10.0f, ARCamera.position.z + 7.0f);
+        Vector3 Position = new Vector3(ARCamera.position.x + 3, ARCamera.position.y - 10.0f, ARCamera.position.z + 7.0f);
         if (PlacePlane)
         {
             // create plane by rayCast
