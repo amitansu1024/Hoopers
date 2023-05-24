@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 1549795966402181959}
   - component: {fileID: 1536627032784382567}
   - component: {fileID: 261853401460391800}
+  - component: {fileID: 7692168540114533943}
+  - component: {fileID: 5558163736865151753}
+  - component: {fileID: 8079073715082091553}
   m_Layer: 0
   m_Name: BasketBall
   m_TagString: Untagged
@@ -114,3 +117,43 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7692168540114533943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6536884229479276603}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b85f35d09be19c94087cd7c72351ec6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 0}
+--- !u!114 &5558163736865151753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6536884229479276603}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b882b3ee66fb53b42a9dc1c13cd31655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetObject: {fileID: 0}
+  LaunchAngle: 45
+  button: {fileID: 0}
+--- !u!114 &8079073715082091553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6536884229479276603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b29e27ced56af94eb0283be290e3712, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

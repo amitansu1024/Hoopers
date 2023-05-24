@@ -15,11 +15,9 @@ public class PlaceTarget : MonoBehaviour
         TargetObject = GameObject.Find("Target");
         TargetSphere = GameObject.Find("TargetSphere");
         Instantiate(TargetSphere, TargetObject.transform.position, Quaternion.identity);
-        Rigidbody rigid = TargetObject.GetComponent<Rigidbody>();
 
 
         // set parent to ARCAmera
-        rigid.constraints = RigidbodyConstraints.FreezePositionZ;
     }
 
     void Update() { 
