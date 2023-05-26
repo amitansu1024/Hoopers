@@ -7,14 +7,14 @@ public class PlaceTarget : MonoBehaviour
     // Start is called before the first frame update
     public Transform ARCamera;
     public GameObject TargetObject;
-    private float radius = 10.0f;
+    public static float radius = 15.0f;
     public GameObject TargetSphere;
     void Start()
     {
         ARCamera = GameObject.Find("AR Camera").transform;
         TargetObject = GameObject.Find("Target");
         TargetSphere = GameObject.Find("TargetSphere");
-        Instantiate(TargetSphere, TargetObject.transform.position, Quaternion.identity);
+        //Instantiate(TargetSphere, TargetObject.transform.position, Quaternion.identity);
 
 
         // set parent to ARCAmera

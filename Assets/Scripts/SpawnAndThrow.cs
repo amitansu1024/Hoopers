@@ -9,7 +9,7 @@ public class SpawnAndThrow : MonoBehaviour
 
     private Transform TargetObject;
     private Transform ARCamera;
-    private int SpawnNumber = 0;
+    public static int SpawnNumber = 0;
     private int DestroyNumber;
     [Range(45.0f, 75.0f)] public float LaunchAngle;
     bool isThrowed = false;
@@ -76,19 +76,22 @@ public class SpawnAndThrow : MonoBehaviour
         Debug.Log(globalVelocity);
         PreFab.GetComponent<Rigidbody>().velocity = globalVelocity;
         Debug.Log("Throw is called");
+        SpawnNumber++;
         isThrowed = true;
+
+    }
+    void PerfectScore() { 
+        if (DetectCollision.ScoreDetected != SpawnNumber) {
+            DetectCollision.Score += DetectCollision.Score  * DetectCollision.ScoreDetected;
+            DetectCollision.ScoreDetected = 0; 
+            SpawnNumber = 0;
+        } else {
+            Debug.Log("Perfect Score" + DetectCollision.ScoreDetected);
+        }
     }
     void Update()
     {
-        // if (Input.GetKey(KeyCode.W) && ShootReady == true) { 
-        //     Throw();
-        //     ShootReady = false;
-        // }
-
-        // if (isThrowed) { 
-        //     Spawn();
-        //     isThrowed = false;
-        // }
-        Destroy(PreFab, 3);
+        PerfectScore();
+        Destroy(PreFab, 5);
     }
 }

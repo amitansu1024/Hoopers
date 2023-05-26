@@ -5,10 +5,10 @@ using TMPro;
 
 public class DetectCollision : MonoBehaviour
 {
-
-   //FIrstPersonHoops Hoops;
     public GameObject ScoreBox;
-    public static int Score;
+    private int continuousScore; // consequitive score 
+    public static int ScoreDetected = 0;
+    public static int Score = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +24,11 @@ public class DetectCollision : MonoBehaviour
             Debug.Log("SCored ball touched with net");
             ScoreBox.GetComponent<TextMeshProUGUI>().text = "Score : "  + ++Score;
             Destroy(other.gameObject.transform.parent.gameObject);
-            //Destroy(other.gameObject);
+            FirstPersonHoops.HoopsNumber--;
+            ScoreDetected++;
         }
     }
+
+
 }
 
