@@ -13,6 +13,9 @@ public class DestroyBall : MonoBehaviour
 
     void OnDestroy() { 
         SpawnNumber++;
+        if (DetectCollision.ScoreDetected != SpawnNumber) { 
+            DetectCollision.ScoreDetected = 0;
+        }
     }
 
     // Update is called once per frame

@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SpawnAndThrow : MonoBehaviour
 {
     public GameObject PreFab;
+    public static int Lives = 1;
+    public GameObject LivesText;
 
     private Transform TargetObject;
     private Transform ARCamera;
@@ -21,6 +24,7 @@ public class SpawnAndThrow : MonoBehaviour
         LaunchAngle = 75;
         TargetObject = GameObject.Find("Target").transform;
         ARCamera = GameObject.Find("AR Camera").transform;
+        LivesText = GameObject.Find("Lives");
         InitialPosition = new Vector3(ARCamera.position.x, ARCamera.position.y - 1.0f, ARCamera.position.z + 2.0f);
 
 //        Throw();
@@ -69,9 +73,15 @@ public class SpawnAndThrow : MonoBehaviour
     {
         Destroy(PreFab, 5);  
 
+        LivesText.GetComponent<TextMeshProUGUI>().text = "Lives : "  + Lives;
         if (DestroyBall.SpawnNumber >= 3 && DetectCollision.ScoreDetected == 0) { 
             // go to the gameOVer
-            Debug.Log("GameOver Screen");
+            Lives--;
+            DestroyBall.SpawnNumber = 0;
+        }
+
+        if (Lives == 0) { 
+            // gameover
         }
     }
 }

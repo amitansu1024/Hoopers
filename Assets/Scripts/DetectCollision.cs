@@ -6,7 +6,6 @@ using TMPro;
 public class DetectCollision : MonoBehaviour
 {
     public GameObject ScoreBox;
-    private int continuousScore; // consequitive score 
     public static int ScoreDetected = 0;
     public static int Score = 5;
     // Start is called before the first frame update
@@ -18,8 +17,8 @@ public class DetectCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ScoreCombo.SetActive(false);
     }
+
     void OnTriggerEnter(Collider other) { 
         if (other.gameObject.name == "ScoreHitbox") { 
             Debug.Log("SCored ball touched with net");
@@ -29,11 +28,11 @@ public class DetectCollision : MonoBehaviour
             ScoreDetected++;
             Debug.Log("Current Score is " + ScoreDetected);
 
-            if (DestroyBall.SpawnNumber == ScoreDetected && DestroyBall.SpawnNumber >= 1) { 
-                // display perfect Score
-                // Debug.Log("Perfect Score is " + ScoreDetected);
-                // ScoreCombo.transform.SetParent(other.gameObject.transform);
-                // ScoreCombo.GetComponentInChildren<TextMeshProUGUI>().transform.SetParent(other.gameObject.transform);
+            if (Score % 10 == 0) { 
+                SpawnAndThrow.Lives++;
+            }
+
+            if (DestroyBall.SpawnNumber != ScoreDetected && DestroyBall.SpawnNumber >= 1) { 
             }
             else {
                 // Score *= ScoreDetected; 
