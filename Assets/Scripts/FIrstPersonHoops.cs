@@ -6,6 +6,7 @@ public class FirstPersonHoops : MonoBehaviour
     // Start is called before the first frame update
     public GameObject Hoops;
     public GameObject MotionHoops;
+    public float probVert = 10, probHori = 30, probStat = 60;
     public Transform ARCamera;
     // the radius
     private float radius;
@@ -48,16 +49,27 @@ public class FirstPersonHoops : MonoBehaviour
                     Quaternion.Euler(factor * (rangex / 10), -95, 0));
     }
 
+    void InstantiateStaticHoops(float rangex, float rangey) {
+        MotionHoops = Resources.Load<GameObject>("Prefabs/HoopMotion");
+
+        int factorX = Random.Range(-8, 2);   
+        int factorY = Random.Range(-8, 8);
+
+        HoopsNumber++;
+
+        Instantiate(MotionHoops, new Vector3(ARCamera.position.x, ARCamera.position.y, ARCamera.position.z), 
+                    Quaternion.Euler(factorX * (rangex / 10), factorY * (rangey / 10), 0));
+     }
+
     void SpawnHoops(int score) {
 //         float probability = score * score / 8 + 50; // for debugging 
-        // float probability = 50;
-        // int random = Random.Range(0, 100);
-        // if (random >= probability) 
-        //     InstantiateHorizontalHoops(75);
-        // else if (random < probability) 
-        //     InstantiateVerticalHoops(80);
-
-        InstantiateVerticalHoops(100);
+        int random = Random.Range(0, 100);
+        if (random > 0 && random <= probVert) 
+            InstantiateVerticalHoops(80);
+        else if (random > probVert && random <= probStat) 
+            InstantiateHorizontalHoops(75);
+        else if (random > probStat && random <= 100)
+            InstantiateStaticHoops(75, 80);
 
     }
 
