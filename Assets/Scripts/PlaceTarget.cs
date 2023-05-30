@@ -7,7 +7,7 @@ public class PlaceTarget : MonoBehaviour
     // Start is called before the first frame update
     public Transform ARCamera;
     public GameObject TargetObject;
-    public static float radius = 15.0f;
+    public static float radius = 18.0f;
     public GameObject TargetSphere;
     void Start()
     {

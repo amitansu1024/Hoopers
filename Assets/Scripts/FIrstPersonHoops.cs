@@ -15,7 +15,6 @@ public class FirstPersonHoops : MonoBehaviour
         radius = PlaceTarget.radius;
         ARCamera = GameObject.Find("AR Camera").transform; 
         Hoops = Resources.Load<GameObject>("Prefabs/Hoop");
-        MotionHoops = Resources.Load<GameObject>("Prefabs/HoopMotion");
     }
 
 
@@ -31,23 +30,34 @@ public class FirstPersonHoops : MonoBehaviour
 
     }
 
-    void InstantiateMotionHoops(float rangex, float rangey) { 
-        float xAngle = Random.Range(-rangex, +rangex);
-        float yAngle = Random.Range(-rangey, +rangey);
+    void InstantiateVerticalHoops(float rangey) { 
+        MotionHoops = Resources.Load<GameObject>("Prefabs/HoopMotionVert");
+
+        int factor = Random.Range(-8, 8);
         HoopsNumber++;
         Instantiate(MotionHoops, new Vector3(ARCamera.position.x, ARCamera.position.y, ARCamera.position.z), 
-                    Quaternion.Euler(xAngle, yAngle, 0));
+                    Quaternion.Euler(-70, factor * (rangey / 10), 0));
         //MotionHoops.transform.rotation = Quaternion.Euler(xAngle, yAngle, 0);
+    }
+    void InstantiateHorizontalHoops(float rangex) { 
+        MotionHoops = Resources.Load<GameObject>("Prefabs/HoopMotionHori");
+
+        int factor = Random.Range(-8, 2);   
+        HoopsNumber++;
+        Instantiate(MotionHoops, new Vector3(ARCamera.position.x, ARCamera.position.y, ARCamera.position.z), 
+                    Quaternion.Euler(factor * (rangex / 10), -95, 0));
     }
 
     void SpawnHoops(int score) {
-        // float probability = score * score / 8 + 50; // for debugging 
-        float probability = 50;
-        int random = Random.Range(0, 100);
-        if (random >= probability) 
-            InstantiateMotionHoops(45, 45);
-        else if (random < probability) 
-            InstantiateHoops(8, 8);
+//         float probability = score * score / 8 + 50; // for debugging 
+        // float probability = 50;
+        // int random = Random.Range(0, 100);
+        // if (random >= probability) 
+        //     InstantiateHorizontalHoops(75);
+        // else if (random < probability) 
+        //     InstantiateVerticalHoops(80);
+
+        InstantiateVerticalHoops(100);
 
     }
 
