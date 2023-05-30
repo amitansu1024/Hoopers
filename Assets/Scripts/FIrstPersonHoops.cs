@@ -44,7 +44,6 @@ public class FirstPersonHoops : MonoBehaviour
         // float probability = score * score / 8 + 50; // for debugging 
         float probability = 50;
         int random = Random.Range(0, 100);
-        Debug.Log("Random" + random + "prob" + probability);
         if (random >= probability) 
             InstantiateMotionHoops(45, 45);
         else if (random < probability) 

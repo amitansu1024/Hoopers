@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7692168540114533943}
   - component: {fileID: 5558163736865151753}
   - component: {fileID: 8079073715082091553}
+  - component: {fileID: 3371057275273942802}
   m_Layer: 0
   m_Name: BasketBall
   m_TagString: Untagged
@@ -66,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 39f2f77f32658ce4485997b115cb2c12, type: 2}
+  - {fileID: 2100000, guid: ec554f292ea9a2a458764e8b0267dc04, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -158,3 +159,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScoreBox: {fileID: 0}
+  ScoreCombo: {fileID: 0}
+--- !u!114 &3371057275273942802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6536884229479276603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c377872629e895a438e0bfe0b32688a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
