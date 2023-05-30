@@ -24,14 +24,18 @@ public class Motion : MonoBehaviour
         if (random >= probability) { 
             // transform.rotation = new Quaternion(30, 0, 0, 0);
             transform.Rotate(new Vector3(0, m_speed, 0));
-            if  (transform.rotation.eulerAngles.y == 90 || transform.rotation.eulerAngles.y == -90)
-                transform.rotation.eulerAngles.Set(transform.rotation.eulerAngles.x, -45, transform.rotation.eulerAngles.z);
+            if  (transform.rotation.eulerAngles.y >= 90) { 
+                Destroy(transform.gameObject);
+                FirstPersonHoops.HoopsNumber--;
+            }
             }
         else if (random < probability) { 
             //transform.rotation = new Quaternion(m_speed, 0, 0, 0);
-            transform.Rotate(new Vector3(-m_speed, 0, 0));
-            if (transform.rotation.eulerAngles.x == 90 || transform.rotation.eulerAngles.x == -90)
-                m_speed = -m_speed;
+            transform.Rotate(new Vector3(m_speed, 0, 0));
+            if (transform.rotation.eulerAngles.x >= 75) { 
+                Destroy(transform.gameObject);
+                FirstPersonHoops.HoopsNumber--;
+            }
         }
     }
 }

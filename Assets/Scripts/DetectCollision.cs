@@ -36,7 +36,7 @@ public class DetectCollision : MonoBehaviour
                 // ScoreCombo.GetComponentInChildren<TextMeshProUGUI>().transform.SetParent(other.gameObject.transform);
             }
             else {
-                Score *= ScoreDetected; 
+                // Score *= ScoreDetected; 
                 DestroyBall.SpawnNumber = 0;
                 ScoreDetected = 0;
             }
