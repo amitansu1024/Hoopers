@@ -34,26 +34,26 @@ public class FirstPersonHoops : MonoBehaviour
     void InstantiateVerticalHoops(float rangey) { 
         MotionHoops = Resources.Load<GameObject>("Prefabs/HoopMotionVert");
 
-        int factor = Random.Range(-8, 8);
+        int factor = Random.Range(-4, 4);
         HoopsNumber++;
         Instantiate(MotionHoops, new Vector3(ARCamera.position.x, ARCamera.position.y, ARCamera.position.z), 
-                    Quaternion.Euler(-70, factor * (rangey / 10), 0));
+                    Quaternion.Euler(-60, factor * (rangey / 10), 0));
         //MotionHoops.transform.rotation = Quaternion.Euler(xAngle, yAngle, 0);
     }
     void InstantiateHorizontalHoops(float rangex) { 
         MotionHoops = Resources.Load<GameObject>("Prefabs/HoopMotionHori");
 
-        int factor = Random.Range(-8, 2);   
+        int factor = Random.Range(-6, 4);   
         HoopsNumber++;
         Instantiate(MotionHoops, new Vector3(ARCamera.position.x, ARCamera.position.y, ARCamera.position.z), 
-                    Quaternion.Euler(factor * (rangex / 10), -95, 0));
+                    Quaternion.Euler(factor * (rangex / 10), -60, 0));
     }
 
     void InstantiateStaticHoops(float rangex, float rangey) {
         MotionHoops = Resources.Load<GameObject>("Prefabs/HoopMotion");
 
-        int factorX = Random.Range(-8, 2);   
-        int factorY = Random.Range(-8, 8);
+        int factorX = Random.Range(-6, 4);   
+        int factorY = Random.Range(-4, 4);
 
         HoopsNumber++;
 

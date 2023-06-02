@@ -21,7 +21,7 @@ public class SpawnAndThrow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LaunchAngle = 75;
+        LaunchAngle = 65;
         TargetObject = GameObject.Find("Target").transform;
         ARCamera = GameObject.Find("AR Camera").transform;
         LivesText = GameObject.Find("Lives");

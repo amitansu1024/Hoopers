@@ -17,6 +17,6 @@ public class MotionHorizontal : MonoBehaviour
     void Update()
     {
         transform.Rotate(new Vector3(0, m_speed, 0), Space.World);
-        Destroy(this.gameObject, 25);
+        Destroy(this.gameObject, 15);
     }
 }
