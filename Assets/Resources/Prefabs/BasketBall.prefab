@@ -159,7 +159,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScoreBox: {fileID: 0}
-  ScoreCombo: {fileID: 0}
+  AudioSrc: {fileID: 0}
+  AudioClp: {fileID: 0}
 --- !u!114 &3371057275273942802
 MonoBehaviour:
   m_ObjectHideFlags: 0
