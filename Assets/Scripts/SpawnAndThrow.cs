@@ -73,7 +73,7 @@ public class SpawnAndThrow : MonoBehaviour
     {
         Destroy(PreFab, 5);  
 
-        LivesText.GetComponent<TextMeshProUGUI>().text = "Lives : "  + Lives;
+        LivesText.GetComponent<TextMeshProUGUI>().text = " "  + Lives;
         if (DestroyBall.SpawnNumber >= 3 && DetectCollision.ScoreDetected == 0) { 
             // go to the gameOVer
             Lives--;
