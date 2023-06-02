@@ -6,6 +6,7 @@ using TMPro;
 
 public class SpawnAndThrow : MonoBehaviour
 {
+    public AudioSource AudioSrc;
     public GameObject PreFab;
     public static int Lives = 1;
     public GameObject LivesText;
@@ -25,6 +26,8 @@ public class SpawnAndThrow : MonoBehaviour
         TargetObject = GameObject.Find("Target").transform;
         ARCamera = GameObject.Find("AR Camera").transform;
         LivesText = GameObject.Find("Lives");
+        AudioSrc = this.gameObject.AddComponent<AudioSource>();
+        AudioSrc.clip = Resources.Load<AudioClip>("Sounds/BallShoot");
         InitialPosition = new Vector3(ARCamera.position.x, ARCamera.position.y - 1.0f, ARCamera.position.z + 2.0f);
 
 //        Throw();
@@ -65,6 +68,7 @@ public class SpawnAndThrow : MonoBehaviour
         Vector3 globalVelocity = PreFab.transform.TransformDirection(localVelocity);
 
         PreFab.GetComponent<Rigidbody>().velocity = globalVelocity;
+        AudioSrc.Play();
         isThrowed = true;
 
     }

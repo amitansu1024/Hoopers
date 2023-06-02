@@ -8,9 +8,13 @@ public class DetectCollision : MonoBehaviour
     public GameObject ScoreBox;
     public static int ScoreDetected = 0;
     public static int Score = 5;
+    public AudioSource AudioSrc;
+    public AudioClip AudioClp;
     // Start is called before the first frame update
     void Start()
     {
+        AudioSrc = this.gameObject.AddComponent<AudioSource>();
+        AudioSrc.clip = Resources.Load<AudioClip>("Sounds/PerfectScore");
         ScoreBox = GameObject.Find("Score");
     }
 
@@ -26,6 +30,7 @@ public class DetectCollision : MonoBehaviour
 
             FirstPersonHoops.HoopsNumber--;
             ScoreDetected++;
+            AudioSrc.Play();
             Debug.Log("Current Score is " + ScoreDetected);
 
             if (Score % 10 == 0) { 
