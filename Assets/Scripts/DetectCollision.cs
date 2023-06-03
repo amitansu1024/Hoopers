@@ -7,7 +7,7 @@ public class DetectCollision : MonoBehaviour
 {
     public GameObject ScoreBox;
     public static int ScoreDetected = 0;
-    public static int Score = 9;
+    public static int Score = 0;
     public AudioSource AudioSrc;
     public AudioClip AudioClp;
     // Start is called before the first frame update
