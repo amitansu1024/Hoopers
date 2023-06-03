@@ -26,11 +26,13 @@ public class SpawnAndThrow : MonoBehaviour
         TargetObject = GameObject.Find("Target").transform;
         ARCamera = GameObject.Find("AR Camera").transform;
         LivesText = GameObject.Find("Lives");
+
+        // Ball Shooting sound
         AudioSrc = this.gameObject.AddComponent<AudioSource>();
         AudioSrc.clip = Resources.Load<AudioClip>("Sounds/BallShoot");
-        InitialPosition = new Vector3(ARCamera.position.x, ARCamera.position.y - 1.0f, ARCamera.position.z + 2.0f);
 
-//        Throw();
+        // Intial Position of ball just below the camera
+        InitialPosition = new Vector3(ARCamera.position.x, ARCamera.position.y - 1.0f, ARCamera.position.z + 2.0f);
     }
 
     void Spawn() { 
@@ -39,7 +41,7 @@ public class SpawnAndThrow : MonoBehaviour
         PreFab = Instantiate(PreFab, InitialPosition, Quaternion.identity);
         PreFab.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
     }
-    // Update is called once per frame
+
     public void Throw()  
     {
         Spawn();
