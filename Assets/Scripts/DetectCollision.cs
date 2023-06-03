@@ -7,11 +7,14 @@ using UnityEngine.SocialPlatforms.Impl;
 public class DetectCollision : MonoBehaviour
 {
     public GameObject ScoreBox;
+    public AudioSource audio;
     public static int ScoreDetected = 0;
     public static int Score = 5;
     // Start is called before the first frame update
     void Start()
     {
+        audio = this.gameObject.AddComponent<AudioSource>();
+        audio.clip = Resources.Load<AudioClip>("Sounds/PerfectScore");
         ScoreBox = GameObject.Find("Score");
     }
 
@@ -27,6 +30,7 @@ public class DetectCollision : MonoBehaviour
 
             FirstPersonHoops.HoopsNumber--;
             ScoreDetected++;
+            audio.Play();
             Debug.Log("Current Score is " + ScoreDetected);
 
             if (Score % 10 == 0) { 
