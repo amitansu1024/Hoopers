@@ -29,6 +29,7 @@ public class DetectCollision : MonoBehaviour
 
             FirstPersonHoops.HoopsNumber--;
             ScoreDetected++;
+           
 
             // Play the score audio
             AudioSrc.Play();
@@ -39,12 +40,14 @@ public class DetectCollision : MonoBehaviour
             if (Score % 10 == 0) {
                 SpawnAndThrow.Lives++;
             }
-
-            if (DestroyBall.SpawnNumber != ScoreDetected && DestroyBall.SpawnNumber >= 1) { 
+            Debug.Log(ScoreDetected);
+            Debug.Log("spawn" + ScoreDetected);
+            if (DestroyBall.SpawnNumber <= ScoreDetected) { 
                 // keep track of combos
             }
             else {
                 // if combo breaks reset
+                Debug.Log("Combo breaks");
                 DestroyBall.SpawnNumber = 1;
                 ScoreDetected = 0;
             }
