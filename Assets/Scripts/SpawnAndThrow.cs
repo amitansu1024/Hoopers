@@ -13,7 +13,6 @@ public class SpawnAndThrow : MonoBehaviour
 
     private Transform TargetObject;
     private Transform ARCamera;
-    private int DestroyNumber;
     [Range(45.0f, 75.0f)] public float LaunchAngle;
     bool isThrowed = false;
     bool ShootReady = true;
@@ -80,7 +79,7 @@ public class SpawnAndThrow : MonoBehaviour
         Destroy(PreFab, 5);  
 
         LivesText.GetComponent<TextMeshProUGUI>().text = " "  + Lives;
-        if (DestroyBall.SpawnNumber >= 4 && DetectCollision.ScoreDetected == 0) { 
+        if (DestroyBall.SpawnNumber > 3 && DetectCollision.ScoreDetected == 0) { 
             // go to the gameOVer
             Lives--;
             DestroyBall.SpawnNumber = 1;

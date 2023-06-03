@@ -7,7 +7,7 @@ public class DetectCollision : MonoBehaviour
 {
     public GameObject ScoreBox;
     public static int ScoreDetected = 0;
-    public static int Score = 0;
+    public static int Score = 9;
     public AudioSource AudioSrc;
     public AudioClip AudioClp;
     // Start is called before the first frame update
@@ -57,6 +57,7 @@ public class DetectCollision : MonoBehaviour
             obj.GetComponent<ParticleSystem>().Play();
             Destroy(obj, 1);
 
+            DestroyBall.SpawnNumber--;
             // destroy the hoop
             Destroy(other.gameObject.transform.parent.gameObject); 
         }
