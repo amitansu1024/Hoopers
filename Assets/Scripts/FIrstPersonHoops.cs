@@ -6,7 +6,7 @@ public class FirstPersonHoops : MonoBehaviour
     // Start is called before the first frame update
     public GameObject Hoops;
     public GameObject MotionHoops;
-    public float probVert = 10, probHori = 30, probStat = 60;
+    public static float probVert = 10, probHori = 30, probStat = 60; // probability of spawning the hoops
     public Transform ARCamera;
     // the radius
     private float radius;
@@ -38,7 +38,6 @@ public class FirstPersonHoops : MonoBehaviour
         HoopsNumber++;
         Instantiate(MotionHoops, new Vector3(ARCamera.position.x, ARCamera.position.y, ARCamera.position.z), 
                     Quaternion.Euler(-60, factor * (rangey / 10), 0));
-        //MotionHoops.transform.rotation = Quaternion.Euler(xAngle, yAngle, 0);
     }
     void InstantiateHorizontalHoops(float rangex) { 
         MotionHoops = Resources.Load<GameObject>("Prefabs/HoopMotionHori");
@@ -62,15 +61,23 @@ public class FirstPersonHoops : MonoBehaviour
      }
 
     void SpawnHoops(int score) {
-//         float probability = score * score / 8 + 50; // for debugging 
         int random = Random.Range(0, 100);
-        if (random > 0 && random <= probVert) 
+        if (random > 0 && random <= probVert && score > 5) 
             InstantiateVerticalHoops(80);
-        else if (random > probVert && random <= probStat) 
+        else if (random > probVert && random <= probStat && score > 5) 
             InstantiateHorizontalHoops(75);
         else if (random > probStat && random <= 100)
             InstantiateStaticHoops(75, 80);
 
+    }
+
+//   update probability 
+    public static void updateProbability() { 
+        if (probStat > 10) { 
+            probVert += 1;
+            probHori += 1;
+            probStat -= 2;
+        }
     }
 
     // Update is called once per frame
@@ -79,5 +86,6 @@ public class FirstPersonHoops : MonoBehaviour
         while (HoopsNumber < 5) { 
             SpawnHoops(DetectCollision.Score);
         }
+        
     }
 }

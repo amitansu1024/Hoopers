@@ -78,16 +78,16 @@ public class SpawnAndThrow : MonoBehaviour
         Destroy(PreFab, 5);  
 
         LivesText.GetComponent<TextMeshProUGUI>().text = " "  + Lives;
-        if (DestroyBall.SpawnNumber >= 3 && DetectCollision.ScoreDetected == 0) { 
+        if (DestroyBall.SpawnNumber >= 4 && DetectCollision.ScoreDetected == 0) { 
             // go to the gameOVer
             Lives--;
-            DestroyBall.SpawnNumber = 0;
+            DestroyBall.SpawnNumber = 1;
         }
 
         if (Lives == 0) { 
             // gameover
             AudioSrc.clip = Resources.Load<AudioClip>("Sounds/GameOver");
-
+            AudioSrc.Play();
         }
     }
 }
