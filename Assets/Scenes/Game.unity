@@ -580,7 +580,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a9e37c5cd2fd054d99c6b9b2a04125c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointsText: {fileID: 277234172}
   gameovermenu: {fileID: 425024204}
 --- !u!114 &425024210
 MonoBehaviour:
@@ -729,9 +728,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: Quitgame
+      - m_Target: {fileID: 425024209}
+        m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
+        m_MethodName: Restartbutton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2254,9 +2253,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: Quitgame
+      - m_Target: {fileID: 425024209}
+        m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
+        m_MethodName: mainmenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

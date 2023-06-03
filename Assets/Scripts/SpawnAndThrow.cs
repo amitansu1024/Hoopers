@@ -87,11 +87,15 @@ public class SpawnAndThrow : MonoBehaviour
             DestroyBall.SpawnNumber = 0;
         }
 
-        if (Lives == 0)
+        if (Lives <= 0)
         {
             // gameover
             gameOver.EnableGameOverMenu();
             pointsText.GetComponent<TextMeshProUGUI>().text = Score.GetScore().ToString() + " POINTS";
+        }
+        else
+        {
+            gameOver.DisableGameOverMenu();
         }
     }
 }
