@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class DetectCollision : MonoBehaviour
 {
@@ -63,6 +64,16 @@ public class DetectCollision : MonoBehaviour
         }
     }
 
-
+    public int GetScore()
+    {
+        if (Score==5)
+        {
+            return 0;
+        }
+        else
+        {
+            return Score;
+        }
+    }
 }
 

@@ -31,6 +31,8 @@ public class SpawnAndThrow : MonoBehaviour
         AudioSrc.clip = Resources.Load<AudioClip>("Sounds/BallShoot");
 
         // Intial Position of ball just below the camera
+        AudioSrc = this.gameObject.AddComponent<AudioSource>();
+        AudioSrc.clip = Resources.Load<AudioClip>("Sounds/BallShoot");
         InitialPosition = new Vector3(ARCamera.position.x, ARCamera.position.y - 1.0f, ARCamera.position.z + 2.0f);
     }
 
