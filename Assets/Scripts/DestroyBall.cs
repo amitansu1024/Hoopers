@@ -13,8 +13,13 @@ public class DestroyBall : MonoBehaviour
 
     void OnDestroy() { 
         SpawnNumber++;
-        if (DetectCollision.ScoreDetected != SpawnNumber) { 
+        if (SpawnNumber > DetectCollision.ScoreDetected) { 
             DetectCollision.ScoreDetected = 0;
+        }
+        if (SpawnNumber >= 4 && DetectCollision.ScoreDetected == 0) { 
+            // go to the gameOVer
+            SpawnAndThrow.Lives--;
+            SpawnNumber = 1;
         }
     }
 

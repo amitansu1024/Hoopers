@@ -14,10 +14,6 @@ public class PlaceTarget : MonoBehaviour
         ARCamera = GameObject.Find("AR Camera").transform;
         TargetObject = GameObject.Find("Target");
         TargetSphere = GameObject.Find("TargetSphere");
-        //Instantiate(TargetSphere, TargetObject.transform.position, Quaternion.identity);
-
-
-        // set parent to ARCAmera
     }
 
     void Update() { 
@@ -25,20 +21,7 @@ public class PlaceTarget : MonoBehaviour
     }
 
     void PlaceTargetObject() { 
-        // if plane 
-        // RaycastHit hit;
-        // Debug.Log("Target called");
-        // if (Physics.Raycast(ARCamera.transform.position, ARCamera.transform.forward, out hit)) { 
-        //     if (hit.transform.tag == "Environment"){
-
-        //         TargetObject.transform.position = hit.point;
-        //         TargetSphere.transform.position = TargetObject.transform.position;
-        //         Debug.Log("Target Placed");
-        //         Debug.Log(hit.point);
-        //     }
-        // }
-
-        // if first person
+        // target movement
         TargetObject.transform.position = ARCamera.position + ARCamera.forward * radius;
         TargetSphere.transform.position = ARCamera.position + ARCamera.forward * radius;
     }

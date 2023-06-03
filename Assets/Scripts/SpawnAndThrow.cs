@@ -3,21 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class SpawnAndThrow : MonoBehaviour
 {
+    public AudioSource AudioSrc;
     public GameObject PreFab;
     public static int Lives = 1;
     public GameObject LivesText;
-    public GameOver gameOver;
-    public GameObject pointsText;
-    public DetectCollision Score;
 
     private Transform TargetObject;
     private Transform ARCamera;
-    private int DestroyNumber;
     [Range(45.0f, 75.0f)] public float LaunchAngle;
     bool isThrowed = false;
     bool ShootReady = true;
@@ -26,24 +21,29 @@ public class SpawnAndThrow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LaunchAngle = 75;
+        LaunchAngle = 65;
         TargetObject = GameObject.Find("Target").transform;
         ARCamera = GameObject.Find("AR Camera").transform;
         LivesText = GameObject.Find("Lives");
-        InitialPosition = new Vector3(ARCamera.position.x, ARCamera.position.y - 1.0f, ARCamera.position.z + 2.0f);
 
-        //        Throw();
+        // Ball Shooting sound
+        AudioSrc = this.gameObject.AddComponent<AudioSource>();
+        AudioSrc.clip = Resources.Load<AudioClip>("Sounds/BallShoot");
+
+        // Intial Position of ball just below the camera
+        AudioSrc = this.gameObject.AddComponent<AudioSource>();
+        AudioSrc.clip = Resources.Load<AudioClip>("Sounds/BallShoot");
+        InitialPosition = new Vector3(ARCamera.position.x, ARCamera.position.y - 1.0f, ARCamera.position.z + 2.0f);
     }
 
-    void Spawn()
-    {
+    void Spawn() { 
         PreFab = Resources.Load<GameObject>("Prefabs/BasketBall");
 
         PreFab = Instantiate(PreFab, InitialPosition, Quaternion.identity);
         PreFab.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
     }
-    // Update is called once per frame
-    public void Throw()
+
+    public void Throw()  
     {
         Spawn();
 
@@ -63,39 +63,34 @@ public class SpawnAndThrow : MonoBehaviour
 
         // calculate the local space components of the velocity 
         // required to land the projectile on the target object 
-        float Vz = Mathf.Sqrt(Mathf.Abs(G * R * R / (2.0f * (H - R * tanAlpha))));
-        float VzDebug = -(G * R * R / (2.0f * (H - R * tanAlpha)));
+        float Vz = Mathf.Sqrt(Mathf.Abs(G * R * R / (2.0f * (H - R * tanAlpha))) );
+        float VzDebug = -(G * R * R / (2.0f * (H - R * tanAlpha)) );
         float Vy = tanAlpha * Vz;
 
         Vector3 localVelocity = new Vector3(0, Vy, Vz);
         Vector3 globalVelocity = PreFab.transform.TransformDirection(localVelocity);
 
         PreFab.GetComponent<Rigidbody>().velocity = globalVelocity;
+        AudioSrc.Play();
         isThrowed = true;
 
     }
 
     void Update()
     {
-        Destroy(PreFab, 5);
+        Destroy(PreFab, 5);  
 
-        LivesText.GetComponent<TextMeshProUGUI>().text = " " + Lives;
-        if (DestroyBall.SpawnNumber >= 3 && DetectCollision.ScoreDetected == 0)
-        {
+        LivesText.GetComponent<TextMeshProUGUI>().text = " "  + Lives;
+        if (DestroyBall.SpawnNumber > 3 && DetectCollision.ScoreDetected == 0) { 
             // go to the gameOVer
             Lives--;
-            DestroyBall.SpawnNumber = 0;
+            DestroyBall.SpawnNumber = 1;
         }
 
-        if (Lives <= 0)
-        {
+        if (Lives == 0) { 
             // gameover
-            gameOver.EnableGameOverMenu();
-            pointsText.GetComponent<TextMeshProUGUI>().text = Score.GetScore().ToString() + " POINTS";
-        }
-        else
-        {
-            gameOver.DisableGameOverMenu();
+            AudioSrc.clip = Resources.Load<AudioClip>("Sounds/GameOver");
+            AudioSrc.Play();
         }
     }
 }
