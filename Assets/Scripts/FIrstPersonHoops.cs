@@ -13,6 +13,7 @@ public class FirstPersonHoops : MonoBehaviour
     public static int HoopsNumber = 0;
     void Start()
     {
+        HoopsNumber = 0;
         radius = PlaceTarget.radius;
         ARCamera = GameObject.Find("AR Camera").transform; 
         Hoops = Resources.Load<GameObject>("Prefabs/Hoop");
