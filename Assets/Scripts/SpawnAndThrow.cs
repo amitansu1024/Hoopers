@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class SpawnAndThrow : MonoBehaviour
 {
     public GameObject PreFab;
     public static int Lives = 1;
     public GameObject LivesText;
+    public GameOver gameOver;
+    public GameObject pointsText;
+    public DetectCollision Score;
 
     private Transform TargetObject;
     private Transform ARCamera;
@@ -27,17 +32,18 @@ public class SpawnAndThrow : MonoBehaviour
         LivesText = GameObject.Find("Lives");
         InitialPosition = new Vector3(ARCamera.position.x, ARCamera.position.y - 1.0f, ARCamera.position.z + 2.0f);
 
-//        Throw();
+        //        Throw();
     }
 
-    void Spawn() { 
+    void Spawn()
+    {
         PreFab = Resources.Load<GameObject>("Prefabs/BasketBall");
 
         PreFab = Instantiate(PreFab, InitialPosition, Quaternion.identity);
         PreFab.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
     }
     // Update is called once per frame
-    public void Throw()  
+    public void Throw()
     {
         Spawn();
 
@@ -57,8 +63,8 @@ public class SpawnAndThrow : MonoBehaviour
 
         // calculate the local space components of the velocity 
         // required to land the projectile on the target object 
-        float Vz = Mathf.Sqrt(Mathf.Abs(G * R * R / (2.0f * (H - R * tanAlpha))) );
-        float VzDebug = -(G * R * R / (2.0f * (H - R * tanAlpha)) );
+        float Vz = Mathf.Sqrt(Mathf.Abs(G * R * R / (2.0f * (H - R * tanAlpha))));
+        float VzDebug = -(G * R * R / (2.0f * (H - R * tanAlpha)));
         float Vy = tanAlpha * Vz;
 
         Vector3 localVelocity = new Vector3(0, Vy, Vz);
@@ -71,17 +77,25 @@ public class SpawnAndThrow : MonoBehaviour
 
     void Update()
     {
-        Destroy(PreFab, 5);  
+        Destroy(PreFab, 5);
 
-        LivesText.GetComponent<TextMeshProUGUI>().text = " "  + Lives;
-        if (DestroyBall.SpawnNumber >= 3 && DetectCollision.ScoreDetected == 0) { 
+        LivesText.GetComponent<TextMeshProUGUI>().text = " " + Lives;
+        if (DestroyBall.SpawnNumber >= 3 && DetectCollision.ScoreDetected == 0)
+        {
             // go to the gameOVer
             Lives--;
             DestroyBall.SpawnNumber = 0;
         }
 
-        if (Lives == 0) { 
+        if (Lives <= 0)
+        {
             // gameover
+            gameOver.EnableGameOverMenu();
+            pointsText.GetComponent<TextMeshProUGUI>().text = Score.GetScore().ToString() + " POINTS";
+        }
+        else
+        {
+            gameOver.DisableGameOverMenu();
         }
     }
 }
