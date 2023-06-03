@@ -29,7 +29,7 @@ public class SpawnAndThrow : MonoBehaviour
     {
         audi = this.gameObject.AddComponent<AudioSource>();
         audi.clip = Resources.Load<AudioClip>("Sounds/BallShoot");
-        LaunchAngle = 75;
+        LaunchAngle = 63;
         TargetObject = GameObject.Find("Target").transform;
         ARCamera = GameObject.Find("AR Camera").transform;
         LivesText = GameObject.Find("Lives");

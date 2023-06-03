@@ -44,6 +44,10 @@ public class DetectCollision : MonoBehaviour
                 DestroyBall.SpawnNumber = 0;
                 ScoreDetected = 0;
             }
+            // confetti 
+            GameObject confetti = Instantiate(Resources.Load<GameObject>("Prefabs/Confetti"),
+                                                other.gameObject.transform.position, Quaternion.identity);
+            Destroy(confetti, 1); 
 
             Destroy(other.gameObject.transform.parent.gameObject); 
         }
