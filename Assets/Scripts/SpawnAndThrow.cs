@@ -12,6 +12,7 @@ public class SpawnAndThrow : MonoBehaviour
     public static int Lives = 1;
     public GameObject LivesText;
     public GameOver gameOver;
+    public AudioSource audi;
     public GameObject pointsText;
     public DetectCollision Score;
 
@@ -26,6 +27,8 @@ public class SpawnAndThrow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audi = this.gameObject.AddComponent<AudioSource>();
+        audi.clip = Resources.Load<AudioClip>("Sounds/BallShoot");
         LaunchAngle = 75;
         TargetObject = GameObject.Find("Target").transform;
         ARCamera = GameObject.Find("AR Camera").transform;
@@ -71,6 +74,7 @@ public class SpawnAndThrow : MonoBehaviour
         Vector3 globalVelocity = PreFab.transform.TransformDirection(localVelocity);
 
         PreFab.GetComponent<Rigidbody>().velocity = globalVelocity;
+        audi.Play();
         isThrowed = true;
 
     }
