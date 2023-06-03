@@ -11,7 +11,7 @@ public class DestroyHoop : MonoBehaviour
     }
 
     void OnDestroy() { 
-        FirstPersonHoops.HoopsNumber--;
+        FIrstPersonHoops.HoopsNumber--;
     }
     // Update is called once per frame
     void Update()

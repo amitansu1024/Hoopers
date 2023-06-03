@@ -28,7 +28,7 @@ public class DetectCollision : MonoBehaviour
             Debug.Log("SCored ball touched with net");
             ScoreBox.GetComponent<TextMeshProUGUI>().text = "Score : "  + ++Score;
 
-            FirstPersonHoops.HoopsNumber--;
+            FIrstPersonHoops.HoopsNumber--;
             ScoreDetected++;
             audio.Play();
             Debug.Log("Current Score is " + ScoreDetected);

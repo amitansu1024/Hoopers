@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FirstPersonHoops : MonoBehaviour
+public class FIrstPersonHoops : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject Hoops;
