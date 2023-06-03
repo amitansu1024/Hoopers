@@ -86,6 +86,8 @@ public class SpawnAndThrow : MonoBehaviour
 
         if (Lives == 0) { 
             // gameover
+            AudioSrc.clip = Resources.Load<AudioClip>("Sounds/GameOver");
+
         }
     }
 }
