@@ -34,7 +34,7 @@ public class FirstPersonHoops : MonoBehaviour
     void InstantiateVerticalHoops(float rangey) { 
         MotionHoops = Resources.Load<GameObject>("Prefabs/HoopMotionVert");
 
-        int factor = Random.Range(-8, 8);
+        int factor = Random.Range(-4, 4);
         HoopsNumber++;
         Instantiate(MotionHoops, new Vector3(ARCamera.position.x, ARCamera.position.y, ARCamera.position.z), 
                     Quaternion.Euler(-70, factor * (rangey / 10), 0));
@@ -43,7 +43,7 @@ public class FirstPersonHoops : MonoBehaviour
     void InstantiateHorizontalHoops(float rangex) { 
         MotionHoops = Resources.Load<GameObject>("Prefabs/HoopMotionHori");
 
-        int factor = Random.Range(-8, 2);   
+        int factor = Random.Range(-5, 2);   
         HoopsNumber++;
         Instantiate(MotionHoops, new Vector3(ARCamera.position.x, ARCamera.position.y, ARCamera.position.z), 
                     Quaternion.Euler(factor * (rangex / 10), -95, 0));
@@ -52,8 +52,8 @@ public class FirstPersonHoops : MonoBehaviour
     void InstantiateStaticHoops(float rangex, float rangey) {
         MotionHoops = Resources.Load<GameObject>("Prefabs/HoopMotion");
 
-        int factorX = Random.Range(-8, 2);   
-        int factorY = Random.Range(-8, 8);
+        int factorX = Random.Range(-5, 2);   
+        int factorY = Random.Range(-4, 4);
 
         HoopsNumber++;
 
@@ -64,9 +64,9 @@ public class FirstPersonHoops : MonoBehaviour
     void SpawnHoops(int score) {
 //         float probability = score * score / 8 + 50; // for debugging 
         int random = Random.Range(0, 100);
-        if (random > 0 && random <= probVert) 
+        if (random > 0 && random <= probVert && DetectCollision.Score > 5) 
             InstantiateVerticalHoops(80);
-        else if (random > probVert && random <= probStat) 
+        else if (random > probVert && random <= probStat && DetectCollision.Score > 5) 
             InstantiateHorizontalHoops(75);
         else if (random > probStat && random <= 100)
             InstantiateStaticHoops(75, 80);
