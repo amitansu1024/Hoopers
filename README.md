@@ -32,7 +32,7 @@ This game is developed as a class Assignment for the Computer Graphics Course. H
 
 ## Install
 
-You can build the game for any Android Device(device should be support AR), by installing the Unity 2021 LTS Version and building it for AR. OR You can visit this site. 
+You can build the game for any Android Device(device should be support AR), by installing the Unity 2021 LTS Version and building it for AR. 
 
 
 <a id="org30a4657"></a>
